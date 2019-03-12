@@ -3,7 +3,12 @@ variable "access_key" {}
 variable "secret_key" {}
 variable "key_name" {}
 variable "private_ip" {}
-variable "volume_size" {}
+
+variable "volume_size" {
+  type        = "number"
+  description = "Size of the attached EBS volume"
+}
+
 variable "instance_type" {}
 variable "operator_group" {}
 variable "operator_user" {}
