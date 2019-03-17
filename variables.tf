@@ -5,7 +5,6 @@ variable "key_name" {}
 variable "private_ip" {}
 
 variable "volume_size" {
-  type        = "number"
   description = "Size of the attached EBS volume"
 }
 
