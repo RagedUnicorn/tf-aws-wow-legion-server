@@ -28,6 +28,7 @@ echo "${operator_password}" | sudo -S su "${operator_user}" -c 'echo "${mysql_ap
 echo "${operator_password}" | sudo -S su "${operator_user}" -c 'echo "${mysql_app_user_password}" | docker secret create com.ragedunicorn.mysql.app_user_password -'
 
 # download configurations from github gists
+echo "${operator_password}" | sudo -S su "${operator_user}" -c 'mkdir -p /home/"${operator_user}"/config/'
 echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget -O /home/"${operator_user}"/config/bnetserver.conf.tpl https://gist.githubusercontent.com/RagedUnicorn/cc41871747fae654800761f1145bbafb/raw/bnetserver.conf.tpl'
 echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget -O /home/"${operator_user}"/config/worldserver.conf.tpl https://gist.githubusercontent.com/RagedUnicorn/169ada1aba19df700f91cbce3a1086fb/raw/worldserver.conf.tpl'
 
