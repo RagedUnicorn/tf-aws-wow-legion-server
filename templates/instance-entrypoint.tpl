@@ -28,8 +28,8 @@ echo "${operator_password}" | sudo -S su "${operator_user}" -c 'echo "${mysql_ap
 echo "${operator_password}" | sudo -S su "${operator_user}" -c 'echo "${mysql_app_user_password}" | docker secret create com.ragedunicorn.mysql.app_user_password -'
 
 # download configurations from github gists
-echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget https://gist.githubusercontent.com/RagedUnicorn/cc41871747fae654800761f1145bbafb/raw/5df603359963a6dda28c2ab18b5aee02983d30a5/bnetserver.conf.tpl -P /home/"${operator_user}"/config'
-echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget https://gist.githubusercontent.com/RagedUnicorn/169ada1aba19df700f91cbce3a1086fb/raw/9d679c1c37ec33f756a2f09cc94b3fae433f9aab/worldserver.conf.tpl -P /home/"${operator_user}"/config'
+echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget https://gist.githubusercontent.com/RagedUnicorn/cc41871747fae654800761f1145bbafb/raw/93ed0c565a326a9a6ea93508a9c8ffa6b33a408b/bnetserver.conf.tpl -O /home/"${operator_user}"/config/bnetserver.conf.tpl'
+echo "${operator_password}" | sudo -S su "${operator_user}" -c 'wget https://gist.githubusercontent.com/RagedUnicorn/169ada1aba19df700f91cbce3a1086fb/raw/9d679c1c37ec33f756a2f09cc94b3fae433f9aab/worldserver.conf.tpl -O /home/"${operator_user}"/config/worldserver.conf.tpl'
 
 # setup server data if not already done
 sudo mkdir -p data
