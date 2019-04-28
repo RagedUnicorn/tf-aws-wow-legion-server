@@ -218,3 +218,29 @@ Extra user data can be applied through `user_extra_data` which expects an archiv
 > User data is limited to 16 KB. This limit applies to the data in raw form, not base64-encoded form.
 
 If any changes need to be done to one of the scripts apply them directly in the files and then package them into `user-data.tar.gz`. This makes sure that the changes are still showing up in code version control.
+
+## Know Issues
+
+#### Can't connect to Auth Server
+
+The connection to the authentication server is the first step that one has todo before login into his character or creating a new one. There are multiple reasons why that step might fail.
+
+Verify that bnetserver.conf has the correct ip-address configured as external access.
+
+```
+cat /opt/legion/etc/bnetserver.conf | more
+```
+
+Search for `LoginREST.ExternalAddress` and check if this matches the expected value. If not make sure to update the template file(`bnetserver.conf.tpl`) and not the actual configuration then restart the server. During the startup the configuration will be recreated and thus overwrite any changes made to that file.
+
+Additionally make sure to check the database `realmlist` entry.
+
+```
+# connect to mysql from within the wow container
+mysql -uapp -p -hwow-legion-database
+
+mysql> USE auth;
+mysql> SELECT * FROM realmlist;
+```
+
+The entry for the `ragedunicorn` realm should have the same ip-address configured as the entry in `bnetserver.conf`
